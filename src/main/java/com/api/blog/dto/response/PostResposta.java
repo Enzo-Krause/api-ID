@@ -3,5 +3,4 @@ package com.api.blog.dto.response;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public record PostResposta(UUID id, String autor, LocalDate data, String titulo, String texto) {
-}
+public record PostResposta(UUID id, String autor, LocalDate data, String titulo, String texto) {}
