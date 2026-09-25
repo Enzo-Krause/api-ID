@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @Table(name = "tb_comentario")
 public class comentarioModel implements Serializable {
 
-	private static final long serialversionUID = 1l;
+	private static long serialversionUID = 1l;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,10 +39,8 @@ public class comentarioModel implements Serializable {
 	public comentarioModel() {
 	}
 
-	public comentarioModel(UUID id, LocalDate data, String comentario, PostModel post) {
-		super();
-		this.id = id;
-		this.data = data;
+	public comentarioModel( String comentario, PostModel post) {
+		this.data = LocalDate.now();
 		this.comentario = comentario;
 		this.post = post;
 	}

@@ -38,17 +38,28 @@ public class PostModel implements Serializable {
 	@Lob
 	@Column(columnDefinition = "TEXT", nullable = false)
 	private String texto;
-	
+
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<comentarioModel> comentarios = new ArrayList<>();
-	
-	public PostModel() {}
+
+	public PostModel() {
+	}
 
 	public PostModel(String autor, String titulo, String texto) {
 		this.autor = autor;
 		this.data = LocalDate.now();
 		this.texto = texto;
 		this.titulo = titulo;
+	}
+
+	public void adicionarComentario(comentarioModel comentario) {
+		comentarios.add(comentario);
+		comentario.setPost(this);
+
+	}
+	
+	public void removerComentario(comentarioModel comentario) {
+	
 	}
 
 	public UUID getId() {
