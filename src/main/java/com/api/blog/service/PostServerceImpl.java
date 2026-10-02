@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.api.blog.dto.request.ComentarioRequestDto;
 import com.api.blog.dto.request.PostRequest;
@@ -53,6 +54,7 @@ public class PostServerceImpl implements PostService {
     }
 
     @Override
+    @Transactional
     public List<PostResposta> findAll() {
 
         return postRepository.findAll()
