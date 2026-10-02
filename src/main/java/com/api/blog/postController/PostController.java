@@ -18,38 +18,49 @@ import com.api.blog.dto.request.comentarioresponseDto;
 import com.api.blog.dto.response.PostResposta;
 import com.api.blog.service.PostService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Posts e comentarios", description = "Operações do Blog API")
 @RestController
 @RequestMapping("/api")
 public class PostController {
 
 	private final PostService postService;
-	
+
 	public PostController(PostService postService) {
 		this.postService = postService;
 	}
 
+	@Operation(summary = "Lista posts com paginação",
+			description = "Retorna uma lista contendo todos os posts cadastrados no blog.")
 	@GetMapping("/posts")
 	public ResponseEntity<List<PostResposta>> getAllPost() {
 		return ResponseEntity.ok(postService.findAll());
 	}
-	
+    @Operation(
+            summary = "Busca um post pelo ID",
+            description = "Retorna um post específico utilizando seu ID."
+        )
 	@GetMapping("/posts/{id}")
 	public ResponseEntity<PostResposta> getPostById(@PathVariable UUID id) {
 		return ResponseEntity.ok(postService.findById(id));
 	}
-	
+    @Operation(
+            summary = "Cria um novo post",description = "Cadastra um novo post no blog.")
+            
 	@PostMapping("/newpost")
 	public ResponseEntity<PostResposta> createPost(@RequestBody @Valid PostRequest dto) {
-		
+
 		PostResposta created = postService.save(dto);
-		
+
 		return ResponseEntity.status(HttpStatus.CREATED).body(created);
 	}
-	
+
 	@PostMapping("/comentarios/{postId}")
-	public ResponseEntity<comentarioresponseDto> createComentario(@PathVariable UUID postId,@RequestBody @Valid ComentarioRequestDto dto){
+	public ResponseEntity<comentarioresponseDto> createComentario(@PathVariable UUID postId,
+			@RequestBody @Valid ComentarioRequestDto dto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(postService.addComentario(postId, dto));
 	}
 }
