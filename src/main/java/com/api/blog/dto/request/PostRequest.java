@@ -5,10 +5,10 @@ import jakarta.validation.constraints.Size;
 
 public record PostRequest(
 
-		@NotBlank(message = "o autor é obrigatorio") @Size(max = 70, message = "o autor deve ter no maximo 70 letras") String autor,
+		@NotBlank(message = "{post.autor.obrigatorio}") @Size(max = 70, message = "{post.autor.tamanho}") String autor,
 
-		@NotBlank(message = "o tiulo é obrigatorio") @Size(max = 100, message = "o titulo deve ter no maximo 100 letras") String titulo,
+		@NotBlank(message = "{post.titulo.obrigatorio}") @Size(max = 100, message = "{post.titulo.tamanho}") String titulo,
 
-		@NotBlank(message = "o texto é obrigatorio") String texto) {
+		@NotBlank(message = "{post.texto.obrigatorio}") String texto) {
 
 }
