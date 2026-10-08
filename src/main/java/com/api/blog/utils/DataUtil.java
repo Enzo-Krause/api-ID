@@ -17,7 +17,7 @@ public class DataUtil {
         this.postService = postService;
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void savePosts() {
 
         PostRequest post1 = new PostRequest(

@@ -17,7 +17,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_teble")
+@Table(name = "tb_post")
 public class PostModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;

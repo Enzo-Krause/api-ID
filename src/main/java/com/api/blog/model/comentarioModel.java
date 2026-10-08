@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @Table(name = "tb_comentario")
 public class comentarioModel implements Serializable {
 
-	private static long serialversionUID = 1l;
+	private static final long serialversionUID = 1l;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +33,7 @@ public class comentarioModel implements Serializable {
 	private String comentario;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "post-id", nullable = false)
+	@JoinColumn(name = "post_id", nullable = false)
 	private PostModel post;
 
 	public comentarioModel() {

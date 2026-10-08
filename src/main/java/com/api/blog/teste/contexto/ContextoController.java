@@ -24,6 +24,7 @@ public class ContextoController {
 		DateTimeFormatter formatoData = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
 				.withLocale(localeCompleto);
 		
+
 		NumberFormat numero = NumberFormat.getNumberInstance(localeCompleto);
 		numero.setMinimumFractionDigits(2);
 		numero.setMaximumFractionDigits(2);
@@ -55,5 +56,6 @@ public class ContextoController {
 		case "ES" -> ZoneId.of("Europe/Madrid");
 		default -> ZoneId.of("America/Sao_Paulo");
 		};
+	
 	}
 }
